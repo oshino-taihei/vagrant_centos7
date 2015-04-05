@@ -1,16 +1,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+### VM Setting ###
 hostname = "vmcentos"
 ipaddress = "192.168.33.10"
 vmname = "vmcentos7_vagrant"
 vmmemory = "2048"
+##################
 
 Vagrant.configure(2) do |config|
   config.vm.box = "centos7"
   config.vm.network "private_network", ip: ipaddress
   config.vm.hostname = hostname
-  config.vbguest.auto_update = false # Guest Additions自動更新無効
+  config.vbguest.auto_update = true # Guest Additions auto update
   config.vm.provider "virtualbox" do |vb|
     vb.name = vmname
     vb.memory = vmmemory
