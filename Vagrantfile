@@ -13,6 +13,7 @@ vmmemory = "2048"
 
 Vagrant.configure(2) do |config|
   config.vm.box = "centos/7"
+  config.vm.synced_folder ".", "/vagrant", type: "rsync"
   config.vm.network "private_network", ip: ipaddress
   config.vm.hostname = hostname
   config.vbguest.auto_update = true # Guest Additions auto update
@@ -29,5 +30,5 @@ Vagrant.configure(2) do |config|
   end
 
   # シェルスクリプトでプロビジョニング
-  config.vm.provision :shell, inline: "/home/vagrant/sync/run.sh"
+  config.vm.provision :shell, inline: "/vagrant/run.sh"
 end
